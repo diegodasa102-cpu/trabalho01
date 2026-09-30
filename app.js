@@ -4,6 +4,7 @@ const elIncrement = document.getElementById("btn-increment");
 const elDecrement = document.getElementById("btn-decrement");
 const elToggleTheme = document.getElementById("btn-toggle-theme");
 const elTitle = document.getElementById("title");
+const elMessage = document.getElementById("message");
 
 function setCount(newValue) {
   elCount.textContent = String(newValue);
@@ -23,8 +24,37 @@ elDecrement.addEventListener("click", () => {
 
 elToggleTheme.addEventListener("click", () => {
   state.dark = !state.dark;
-  document.documentElement.style.setProperty("--bg", state.dark ? "#0b1220" : "#f8fafc");
-  document.documentElement.style.setProperty("--text", state.dark ? "#e2e8f0" : "#0f172a");
-  elTitle.textContent = state.dark ? "Mini App – Modo Escuro" : "Mini App – GitFlow";
-  elToggleTheme.setAttribute("aria-pressed", String(state.dark));
+
+  document.documentElement.style.setProperty(
+    "--bg",
+    state.dark ? "#0b1220" : "#f8fafc"
+  );
+
+  document.documentElement.style.setProperty(
+    "--text",
+    state.dark ? "#e2e8f0" : "#0f172a"
+  );
+
+  document.documentElement.style.setProperty(
+    "--card",
+    state.dark ? "#1e293b" : "#ffffff"
+  );
+
+  document.documentElement.style.setProperty(
+    "--border",
+    state.dark ? "#475569" : "#e5e7eb"
+  );
+
+  elTitle.textContent = state.dark
+    ? "Mini App – Modo Escuro"
+    : "Mini App – GitFlow";
+
+  elMessage.textContent = state.dark
+    ? "Modo escuro ativado!"
+    : "Bem-vindos! Vamos praticar GitFlow.";
+
+  elToggleTheme.setAttribute(
+    "aria-pressed",
+    String(state.dark)
+  );
 });
